@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <property name="LOG_PATH" value="${user.home}/logs" />
+
+    <property name="APP_NAME" value="fx-boot-demo"/>
+    <property name="ROOT_LEVEL" value="INFO" />
+    <timestamp key="byDate" datePattern="yyyy-MM-dd"/>
+    <property name="MESSAGE_FILE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %marker %thread %logger.%M %msg%n" />
+    <property name="maxhistory" value="200"/>
+    <property name="catalina.base" value="logs"/>
+
+
+    <appender name="STDOUT1" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <!-- <layout class="ch.qos.logback.classic.PatternLayout">
+	  		<Pattern>${MESSAGE_FILE_PATTERN}</Pattern>
+        </layout> -->
+        <encoder>
+            <pattern>${MESSAGE_FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${LOG_PATH}/${APP_NAME}/${APP_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.base}/${APP_NAME}/${APP_NAME}-info-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${maxhistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${MESSAGE_FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${LOG_PATH}/${APP_NAME}/${APP_NAME}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.base}/${APP_NAME}/${APP_NAME}-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${maxhistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${MESSAGE_FILE_PATTERN}
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!--
+   <appender name="domainAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <append>true</append>
+       <filter class="ch.qos.logback.classic.filter.LevelFilter">
+               <level>INFO</level>
+           <onMatch>ACCEPT</onMatch>
+           <onMismatch>DENY</onMismatch>
+       </filter>
+       <file>${catalina.base}/${APP_NAME}/${APP_NAME}-domain.log</file>
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+           <fileNamePattern>${catalina.base}/${APP_NAME}/${APP_NAME}-domain-%d{yyyy-MM-dd}.log</fileNamePattern>
+           <maxHistory>${maxhistory}</maxHistory>
+       </rollingPolicy>
+       <encoder>
+           <pattern>${MESSAGE_FILE_PATTERN}
+           </pattern>
+       </encoder>
+   </appender>
+   -->
+    <logger name="org.spring" level="INFO" />
+    <logger name="org.springframework" level="ERROR" />
+    <logger name="org.mybatis" level="ERROR" />
+    <logger name="com.mongodb" level="ERROR" />
+
+    <logger name="org.hibernate" level="INFO">
+    </logger>
+
+    <logger name="org.apache.http" level="WARN">
+    </logger>
+
+    <logger name="org.apache.commons" level="WARN">
+    </logger>
+
+    <logger name="freemarker" level="WARN">
+    </logger>
+
+    <logger name="io.netty" level="WARN">
+    </logger>
+    <logger name="org.jooq" level="INFO" />
+    <!--
+	<logger name="com.vsoontech.domain" level="INFO" additivity="false">
+		<appender-ref ref="domainAppender"/>
+		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT1"/>
+    </logger>
+    -->
+
+    <root level="${ROOT_LEVEL}">
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="STDOUT1"/>
+        <appender-ref ref="INFO"/>
+    </root>
+
+    <!--
+    针对每个模块分开配置一个日志文件存储。思路就是加一个Appender,和对模块logger进行配置，可以参考上面的配置样例domain模块
+     <appender name="domainAppender"
+		....
+     <logger name="com.domain"
+     ....
+     -->
+</configuration>
