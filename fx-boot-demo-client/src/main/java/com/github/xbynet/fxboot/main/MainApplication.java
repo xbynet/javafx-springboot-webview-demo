@@ -153,6 +153,7 @@ public class MainApplication extends Application {
         urlInput.setMaxWidth(Double.MAX_VALUE);
         //load.setMaxWidth(Double.MAX_VALUE);
         hBox.getChildren().addAll(urlInput,load,reload,back,forward);
+        VBox.setVgrow(webView,Priority.ALWAYS);
         vBox.getChildren().addAll(hBox,webView);
 
 
