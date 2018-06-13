@@ -1,18 +1,23 @@
 @font-face {
-    font-family: MyFont;
+    font-family: 'MyFont';
     /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#uri*/
-    src: url("/static/assets/fonts/PingFang-SC-Regular.ttf")
+    src: url('/static/assets/fonts/PingFang-SC-Regular.ttf');
 }
-.root{
+.root {
     /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#typefont*/
 
     /*serif, sans-serif, monospace, cursive, fantasy.*/
     /*font: 400 16px/1.618 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,sans-serif;*/
+    -fx-font-size: 16pt;
     -fx-font-family: MyFont;
-    -fx-font-size: 28px;
-    /*-fx-font-size: medium;*/
+    /*-fx-base: rgb(132, 145, 47);*/
+    /*-fx-background: red;*/
 }
 
-html {
-    font: 400 16px/1.618 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,sans-serif;
-}
+/*.button {*/
+    /*-fx-background-color: red;*/
+/*}*/
+
+/*html {*/
+    /*font: 400 16px/1.618 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,sans-serif;*/
+/*}*/
