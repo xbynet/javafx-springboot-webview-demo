@@ -2,7 +2,11 @@
 layout("/common/layout.html",{title:title!'maven'}){
 %>
 
-<h1 class="site-h1">maven工具箱</h1>
+<h1 class="site-h1">Maven工具箱</h1>
+
+<div class="site-title">
+    <fieldset><legend><a>Maven本地repo清除</a></legend></fieldset>
+</div>
 <form class="layui-form" lay-filter="clean-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
     <div class="layui-form-item">
         <label class="layui-form-label">groupId</label>

@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
  * @date 2018/6/8 下午5:08
  */
 @Controller
-@RequestMapping("/home")
+@RequestMapping({"/home",""})
 public class HomeController {
 
-    @RequestMapping("/index")
+    @RequestMapping({"/index",""})
     public ModelAndView index(){
         ModelAndView mv=new ModelAndView("/home.html");
         mv.getModel().put("title","fxbootdemo");
