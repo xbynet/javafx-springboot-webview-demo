@@ -1,6 +1,7 @@
 package com.github.xbynet.fxboot.main;
 
 import com.aquafx_project.AquaFx;
+import com.github.xbynet.fxboot.functional.TlcygParser;
 import com.github.xbynet.fxboot.ioc.BeanHolder;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -59,7 +60,8 @@ public class MainApplication extends Application {
                 Platform.runLater(() -> {
                     //webView.getEngine().load("http://127.0.0.1:"+port);
                     //webView.getEngine().load("http://xbynet.top");
-                    webView.getEngine().load("http://127.0.0.1:"+port+"/home/index");
+                    //webView.getEngine().load("http://127.0.0.1:"+port+"/home/index");
+                    TlcygParser.parser(webView,"http://tl.cyg.changyou.com/");
                 });
             }
         });
