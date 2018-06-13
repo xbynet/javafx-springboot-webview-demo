@@ -1,7 +1,16 @@
+@font-face {
+    font-family: MyFont;
+    /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#uri*/
+    src: url("/static/assets/fonts/PingFang-SC-Regular.ttf")
+}
 .root{
+    /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#typefont*/
+
     /*serif, sans-serif, monospace, cursive, fantasy.*/
     /*font: 400 16px/1.618 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,sans-serif;*/
-    /*-fx-font-family: "sans-serif";*/
+    -fx-font-family: MyFont;
+    -fx-font-size: 28px;
+    /*-fx-font-size: medium;*/
 }
 
 html {

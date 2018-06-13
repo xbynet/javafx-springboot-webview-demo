@@ -174,8 +174,8 @@ public class MainApplication extends Application {
         hBox.getChildren().addAll(urlInput,load,reload,back,forward);
         VBox.setVgrow(webView,Priority.ALWAYS);
         vBox.getChildren().addAll(hBox,webView);
-        Scene scene=new Scene(vBox,getScreenSize().getWidth()*0.9,-1);
-        //scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+        Scene scene=new Scene(vBox,getScreenSize().getWidth()*0.85,-1);
+        scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("fxbootdemo");
         //mac os x look and feel
