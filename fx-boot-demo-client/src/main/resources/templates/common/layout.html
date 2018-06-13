@@ -9,8 +9,37 @@
     <% include("/common/header.html"){} %>
 </head>
 <body>
-${layoutContent}
 
+<div class="layui-main site-inline">
+    <div class="site-tree">
+        <!--<div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">-->
+        <!--<select lay-filter="tabVersion">-->
+        <!--<option value="new">2.x</option>-->
+        <!--<option value="v1">1.0.9</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <ul class="layui-tree">
+
+            <li><h2>基础工具</h2></li>
+
+            <li class="site-tree-noicon ">
+                <a href="/tools/maven">
+                    <cite>maven工具</cite>
+                    <!--<em>Getting Started</em>-->
+                </a>
+            </li>
+            <!--<li class="site-tree-noicon ">-->
+                <!--<a href="/doc/base/infrastructure.html">-->
+                    <!--<cite>底层方法</cite>-->
+                    <!--&lt;!&ndash;<em>基础支撑</em>&ndash;&gt;-->
+                <!--</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="site-content">
+        ${layoutContent}
+    </div>
+</div>
 <% include("/common/footer.html"){} %>
 </body>
 </html>

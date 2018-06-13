@@ -1,0 +1,44 @@
+<%
+layout("/common/layout.html",{title:title!'maven'}){
+%>
+
+<h1 class="site-h1">maven工具箱</h1>
+<form class="layui-form" lay-filter="clean-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+    <div class="layui-form-item">
+        <label class="layui-form-label">groupId</label>
+        <div class="layui-input-block">
+            <input type="text" name="groupId" id="groupId" placeholder="请输入groupId" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">artfactIds</label>
+        <div class="layui-input-block">
+            <input type="text" name="artfactIds" id="artfactIds" placeholder="请输入artifactId:version多个以逗号分隔" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" id="clean">执行清除</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        //formTest 即 class="layui-form" 所在元素对应的 lay-filter="" 对应的值
+        form.val("clean-form", {
+            "groupId": "com.github.xbynet"
+        })
+
+    });
+   $(document).ready(function () {
+       $("#clean").on("click",function(){
+           mvn.clean($("#groupId").val(),$("#artfactIds").val());
+           return false;
+       });
+   })
+
+</script>
+<% } %>

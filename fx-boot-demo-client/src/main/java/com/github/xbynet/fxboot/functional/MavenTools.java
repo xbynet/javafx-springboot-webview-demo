@@ -3,6 +3,7 @@ package com.github.xbynet.fxboot.functional;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +16,8 @@ import java.util.Map;
  * @author anzhou.tjw
  * @date 2018/5/21 下午2:09
  */
-public class MavenLocalRepoCleaner {
+@Component("mvn")
+public class MavenTools {
 
     /**
      * coordinateJson
@@ -24,7 +26,7 @@ public class MavenLocalRepoCleaner {
      *     "groupId2":"artifactId:version,..."
      * }
      */
-    public static void clean(String pkg,String artifactIds) {
+    public  void clean(String pkg,String artifactIds) {
         pkg=pkg==null?"":pkg;
         artifactIds=artifactIds==null?"":artifactIds;
         String coordinateJson="{"

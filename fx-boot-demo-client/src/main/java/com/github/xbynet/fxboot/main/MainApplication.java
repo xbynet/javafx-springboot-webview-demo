@@ -1,6 +1,7 @@
 package com.github.xbynet.fxboot.main;
 
 import com.aquafx_project.AquaFx;
+import com.github.xbynet.fxboot.ioc.BeanHolder;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -20,6 +21,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
+import netscape.javascript.JSObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -88,6 +90,8 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         webView=new WebView();
         webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/application.css").toExternalForm());
+
+
         // show "alert" Javascript messages in stdout (useful to debug)
         webView.getEngine().setOnAlert(new EventHandler<WebEvent<String>>(){
             @Override
@@ -96,6 +100,7 @@ public class MainApplication extends Application {
             }
         });
         //primaryStage.titleProperty().bind(webView.getEngine().titleProperty());
+
         webView.getEngine().getLoadWorker().stateProperty().addListener(
             new ChangeListener<Worker.State>() {
                 public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
@@ -112,6 +117,13 @@ public class MainApplication extends Application {
                         }*/
                         primaryStage.setTitle(webView.getEngine().getTitle());
                         //primaryStage.sizeToScene();
+                        JSObject win
+                            = (JSObject) webView.getEngine().executeScript("window");
+                        if(applicationContext!=null) {
+                            BeanHolder beanHolder = applicationContext.getBean(BeanHolder.class);
+                            beanHolder.getBizBeanMap().entrySet().stream().forEach(
+                                e -> win.setMember(e.getKey(), e.getValue()));
+                        }
                     }
                 }
             });
