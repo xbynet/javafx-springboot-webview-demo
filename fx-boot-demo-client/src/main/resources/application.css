@@ -1,0 +1,9 @@
+.root{
+    /*serif, sans-serif, monospace, cursive, fantasy.*/
+    /*font: 400 16px/1.618 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,sans-serif;*/
+    /*-fx-font-family: "sans-serif";*/
+}
+
+html {
+    font: 400 16px/1.618 'PingFang SC','Helvetica Neue','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK SC',Sathu,EucrosiaUPC,sans-serif;
+}

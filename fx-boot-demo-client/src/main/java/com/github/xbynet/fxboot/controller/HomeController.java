@@ -15,7 +15,7 @@ public class HomeController {
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView mv=new ModelAndView("/home.html");
-        mv.getModel().put("title","777测试-1");
+        mv.getModel().put("title","fxbootdemo");
         return mv;
     }
 

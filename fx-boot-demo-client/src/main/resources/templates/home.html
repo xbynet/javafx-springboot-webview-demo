@@ -1,5 +1,48 @@
 <%
 layout("/common/layout.html",{title:title}){
 %>
-Hello,this is main part 1234哈哈
+<div class="layui-main site-inline">
+    <div class="site-tree">
+        <!--<div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">-->
+            <!--<select lay-filter="tabVersion">-->
+                <!--<option value="new">2.x</option>-->
+                <!--<option value="v1">1.0.9</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <ul class="layui-tree">
+
+            <li><h2>基础说明</h2></li>
+
+            <li class="site-tree-noicon ">
+                <a href="/doc/">
+                    <cite>开始使用</cite>
+                    <em>Getting Started</em>
+                </a>
+            </li>
+            <li class="site-tree-noicon ">
+                <a href="/doc/base/infrastructure.html">
+                    <cite>底层方法</cite>
+                    <em>基础支撑</em>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="site-content">
+        <h1 class="site-h1">开始使用 - 入门指南</h1>
+        <blockquote class="layui-elem-quote">
+            layui（谐音：类UI) 是一款采用自身模块规范编写的前端 UI 框架，遵循原生 HTML/CSS/JS 的书写与组织形式，门槛极低，拿来即用。其外在极简，却又不失饱满的内在，体积轻盈，组件丰盈，从核心代码到 API 的每一处细节都经过精心雕琢，非常适合界面的快速开发。layui  首个版本发布于2016年金秋，她区别于那些基于 MVVM 底层的 UI 框架，却并非逆道而行，而是信奉返璞归真之道。准确地说，她更多是为服务端程序员量身定做，你无需涉足各种前端工具的复杂配置，只需面对浏览器本身，让一切你所需要的元素与交互，从这里信手拈来。
+        </blockquote>
+        <p style="margin-bottom: 20px; text-align: center">
+            <img src="//res.layui.com/static/images/layui/logo-2.png">
+        </p>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend><a name="compatibility">兼容性和面向场景</a></legend>
+        </fieldset>
+
+        <blockquote class="layui-elem-quote" style="text-align: center;">
+            layui 兼容人类正在使用的全部浏览器（IE6/7除外），可作为 PC 端后台系统与前台界面的速成开发方案。
+        </blockquote>
+    </div>
+</div>
 <% } %>

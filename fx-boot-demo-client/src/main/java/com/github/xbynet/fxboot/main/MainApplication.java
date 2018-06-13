@@ -1,11 +1,13 @@
 package com.github.xbynet.fxboot.main;
 
+import com.aquafx_project.AquaFx;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,6 +17,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -84,6 +87,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         webView=new WebView();
+        webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/application.css").toExternalForm());
         // show "alert" Javascript messages in stdout (useful to debug)
         webView.getEngine().setOnAlert(new EventHandler<WebEvent<String>>(){
             @Override
@@ -107,6 +111,7 @@ public class MainApplication extends Application {
                             }
                         }*/
                         primaryStage.setTitle(webView.getEngine().getTitle());
+                        //primaryStage.sizeToScene();
                     }
                 }
             });
@@ -118,9 +123,11 @@ public class MainApplication extends Application {
         HBox hBox=new HBox(10);
         hBox.setMinWidth(250);
         TextField urlInput=new TextField();
-        urlInput.setMinWidth(150);
+        urlInput.setPrefWidth(150);
         urlInput.setPromptText("请输入网址");
+
         Button load=new Button("打开");
+        //load.getStyleClass().setAll("btn","btn-danger");
         load.setOnAction(e->{
             String url=urlInput.getCharacters().toString();
             System.out.println("input url:"+url);
@@ -155,13 +162,21 @@ public class MainApplication extends Application {
         hBox.getChildren().addAll(urlInput,load,reload,back,forward);
         VBox.setVgrow(webView,Priority.ALWAYS);
         vBox.getChildren().addAll(hBox,webView);
-
-
-        primaryStage.setScene(new Scene(vBox));
+        Scene scene=new Scene(vBox,getScreenSize().getWidth()*0.9,-1);
+        //scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setTitle("fxbootdemo");
+        //mac os x look and feel
+        AquaFx.style();
+
         primaryStage.show();
     }
 
+    public Rectangle2D getScreenSize(){
+        //http://java-buddy.blogspot.com/2013/11/get-screen-size-using-javafxstagescreen.html
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        return visualBounds;
+    }
     public static void main(String[] args) {
         launchApp(args);
     }
