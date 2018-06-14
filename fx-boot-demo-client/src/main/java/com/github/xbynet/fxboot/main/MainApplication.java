@@ -61,7 +61,7 @@ public class MainApplication extends Application {
                     //webView.getEngine().load("http://127.0.0.1:"+port);
                     //webView.getEngine().load("http://xbynet.top");
                     //webView.getEngine().load("http://127.0.0.1:"+port+"/home/index");
-                    TlcygParser.parser(webView,"http://tl.cyg.changyou.com/");
+                    TlcygParser.parser(webView);
                 });
             }
         });

@@ -8,6 +8,8 @@ import org.jsoup.nodes.Element;
  */
 public class CygListGoodInfo {
 
+    private String sellId;
+
     private String url;
 
     private String sex;
@@ -136,10 +138,19 @@ public class CygListGoodInfo {
         this.mengpai = mengpai;
     }
 
+    public String getSellId() {
+        return sellId;
+    }
+
+    public void setSellId(String sellId) {
+        this.sellId = sellId;
+    }
+
     public static CygListGoodInfo parse(Element e){
         CygListGoodInfo info=new CygListGoodInfo();
         String url=e.select("span > a").attr("href");
         info.setUrl(url);
+        info.setSellId(url.split("serial_num=")[1].split("&")[0]);
         String[] tmpInfo=e.select("dl > dt > a > span").text()
             .replace("[","").replace("]","").split(" ");
         info.setMengpai(tmpInfo[0]);
