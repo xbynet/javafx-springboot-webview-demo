@@ -1,5 +1,6 @@
 package com.github.xbynet.fxboot.functional.model;
 
+import com.github.xbynet.fxboot.annotation.Tokenize;
 import org.jsoup.nodes.Element;
 
 /**
@@ -14,6 +15,7 @@ public class CygListGoodInfo {
 
     private String sex;
 
+    @Tokenize
     private String name;
 
     //等级
@@ -32,6 +34,7 @@ public class CygListGoodInfo {
     private int jjScore;
 
     //区服
+    @Tokenize
     private String server;
 
     //剩余时间
